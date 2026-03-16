@@ -51,6 +51,26 @@ transform:translateY(-3px);
 box-shadow:0 10px 20px rgba(0,0,0,.2)
 }
 
+.callbtn{
+background:#ff6b00;
+color:white;
+padding:15px 30px;
+border-radius:40px;
+text-decoration:none;
+display:inline-block;
+font-weight:bold;
+margin-top:15px
+}
+
+.counter{
+margin-top:20px;
+font-weight:bold;
+background:#ffffff33;
+display:inline-block;
+padding:10px 20px;
+border-radius:20px
+}
+
 section{
 background:white;
 max-width:1000px;
@@ -72,9 +92,7 @@ grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
 gap:25px
 }
 
-.feature{
-text-align:center
-}
+.feature{text-align:center}
 
 .feature i{
 font-size:40px;
@@ -126,14 +144,24 @@ margin-top:20px
 <img src="logo.png" alt="logo ServiceGO+" style="width:300px; display:block; margin:15px auto;">
 
 <p>
-Plateforme gratuite qui vous met en relation avec des prestataires fiables partout à Cotonou. <br/>
-Trouvez rapidement un prestataire de confiance à Cotonou, sans frais, sans stress et sans anarque, grâce à ServiceGO+.
+Plateforme gratuite qui vous met en relation avec des prestataires fiables partout à Cotonou.
+<br>
+Trouvez rapidement un prestataire de confiance à Cotonou, sans frais, sans stress et sans anarque.
 </p>
 
 <a class="btn" onclick="openForm()">
-<i class="fab fa-whatsapp"></i>
-Trouver un prestataire maintenant
+<i class="fab fa-whatsapp"></i> Trouver un prestataire maintenant
 </a>
+
+<br>
+
+<a class="callbtn" href="tel:0154454665">
+<i class="fas fa-phone"></i> Appeler directement
+</a>
+
+<div class="counter">
+<i class="fas fa-users"></i> <span id="demandCount">327</span> demandes déjà reçues
+</div>
 
 <p style="margin-top:20px;background:#ffd700;color:black;padding:10px 20px;border-radius:25px;display:inline-block">
 Service gratuit • Aucun engagement
@@ -147,55 +175,14 @@ Service gratuit • Aucun engagement
 
 <div class="features">
 
-<div class="feature">
-<i class="fas fa-wrench"></i>
-<h3>Plombier</h3>
-</div>
-
-<div class="feature">
-<i class="fas fa-bolt"></i>
-<h3>Électricien</h3>
-</div>
-
-<div class="feature">
-<i class="fas fa-car"></i>
-<h3>Mécanicien</h3>
-</div>
-
-<div class="feature">
-<i class="fas fa-mobile-screen"></i>
-<h3>Réparateur téléphone</h3>
-</div>
-
-<div class="feature">
-<i class="fas fa-laptop"></i>
-<h3>Réparateur ordinateur</h3>
-</div>
-
-<div class="feature">
-<i class="fas fa-fan"></i>
-<h3>Climatisation</h3>
-</div>
-
-<div class="feature">
-<i class="fas fa-hammer"></i>
-<h3>Menuisier</h3>
-</div>
-
-<div class="feature">
-<i class="fas fa-broom"></i>
-<h3>Femme de ménage</h3>
-</div>
-
-<div class="feature">
-<i class="fas fa-truck"></i>
-<h3>Déménagement</h3>
-</div>
-
-<div class="feature">
-<i class="fas fa-sim-card"></i>
-<h3>Service Moov Africa</h3>
-</div>
+<div class="feature"> <i class="fas fa-wrench"></i> <h3>Plombier</h3> </div>
+<div class="feature"> <i class="fas fa-bolt"></i> <h3>Électricien</h3> </div>
+<div class="feature"> <i class="fas fa-car"></i> <h3>Mécanicien</h3> </div>
+<div class="feature"> <i class="fas fa-mobile-screen"></i> <h3>Réparateur téléphone</h3> </div>
+<div class="feature"> <i class="fas fa-laptop"></i> <h3>Réparateur ordinateur</h3> </div>
+<div class="feature"> <i class="fas fa-fan"></i> <h3>Climatisation</h3> </div>
+<div class="feature"> <i class="fas fa-hammer"></i> <h3>Menuisier</h3> </div>
+<div class="feature"> <i class="fas fa-sim-card"></i> <h3>Service Moov Africa</h3> </div>
 
 </div>
 
@@ -207,10 +194,9 @@ Service gratuit • Aucun engagement
 
 <input id="clientName" placeholder="Votre nom">
 
-<input id="clientPhone" placeholder="Votre numéro">
+<input id="clientPhone" placeholder="Votre numéro" type="tel">
 
 <select id="serviceType">
-
 <option value="">Choisir le service</option>
 <option>Plomberie</option>
 <option>Électricité</option>
@@ -219,14 +205,10 @@ Service gratuit • Aucun engagement
 <option>Réparation ordinateur</option>
 <option>Climatisation</option>
 <option>Menuiserie</option>
-<option>Femme de ménage</option>
-<option>Déménagement</option>
 <option>Service MOOV AFRICA</option>
-
 </select>
 
 <select id="clientArea">
-
 <option value="">Votre quartier</option>
 <option>Akpakpa</option>
 <option>Fidjrossè</option>
@@ -235,41 +217,28 @@ Service gratuit • Aucun engagement
 <option>Haie Vive</option>
 <option>Gbégamey</option>
 <option>Vèdoko</option>
-
 </select>
 
-<textarea id="problem"
-placeholder="Décrivez le problème ou service demandé"></textarea>
+<textarea id="problem" placeholder="Décrivez le problème ou service demandé"></textarea>
 
 <input id="location" placeholder="Localisation GPS">
 
 <button onclick="getLocation()">Utiliser ma position GPS</button>
 
 <div class="warning">
-
 Pour votre sécurité et la qualité du service :
-
-• Les coordonnées des prestataires ne sont jamais communiquées directement.  
-• Toutes les demandes passent par ServiceGO+.  
+• Les coordonnées des prestataires ne sont jamais communiquées directement.
+• Toutes les demandes passent par ServiceGO+.
 • Cela garantit suivi, assistance et possibilité de notation.
-
 </div>
 
 <div class="warning">
-
-<i class="fas fa-lock"></i> Vos informations restent confidentielles.  
-<i class="fas fa-check-circle"></i> Seule l’équipe ServiceGO+ traite votre demande.  
+<i class="fas fa-lock"></i> Vos informations restent confidentielles.
+<i class="fas fa-check-circle"></i> Seule l’équipe ServiceGO+ traite votre demande.
 <i class="fas fa-headset"></i> Assistance disponible en cas de problème.
-
 </div>
 
 <button onclick="sendWhatsApp()">Envoyer la demande sur WhatsApp</button>
-
-<p style="margin-top:15px;font-size:14px;opacity:0.9">
-<i class="fas fa-shield-halved"></i> Plateforme sécurisée • 
-<i class="fas fa-user-check"></i> Prestataires vérifiés • 
-<i class="fas fa-star"></i> Système de notation client
-</p>
 
 </section>
 
@@ -278,65 +247,70 @@ Pour votre sécurité et la qualité du service :
 <h2>Comment ça marche ?</h2>
 
 <p style="text-align:center">
-
 1️⃣ Vous envoyez votre demande  
 2️⃣ ServiceGO+ trouve un prestataire disponible  
 3️⃣ Le prestataire intervient chez vous  
 4️⃣ Vous pouvez ensuite laisser une note
-
 </p>
 
 </section>
 
-<!-- Bouton visible pour afficher le formulaire d'avis -->
 <section>
-  <h2>Donner votre avis</h2>
-  <div style="text-align:center">
-    <button onclick="openRating()" style="max-width:300px;margin:auto">
-      Noter un prestataire
-    </button>
-  </div>
+
+<h2>Donner votre avis</h2>
+
+<div style="text-align:center">
+
+<button onclick="openRating()" style="max-width:300px;margin:auto">
+Noter un prestataire
+</button>
+
+</div>
+
 </section>
 
-<!-- Formulaire caché au départ -->
+
 <section id="ratingSection" style="display:none">
-  <h2>Noter un prestataire</h2>
 
-  <input id="ratingName" placeholder="Votre nom">
-  <input id="ratingPhone" placeholder="Votre numéro">
+<h2>Noter un prestataire</h2>
 
-  <select id="serviceRated">
-    <option value="">Type de service</option>
-    <option>Plombier</option>
-    <option>Électricien</option>
-    <option>Mécanicien</option>
-    <option>Réparation téléphone</option>
-    <option>Réparation ordinateur</option>
-    <option>Climatisation</option>
-    <option>Menuiserie</option>
-    <option>Femme de ménage</option>
-    <option>Déménagement</option>
-  </select>
+<input id="ratingName" placeholder="Votre nom">
 
-  <select id="ratingScore">
-    <option value="">Note</option>
-    <option>⭐⭐⭐⭐⭐ Excellent</option>
-    <option>⭐⭐⭐⭐ Bon</option>
-    <option>⭐⭐⭐ Moyen</option>
-    <option>⭐⭐ Mauvais</option>
-    <option>⭐ Très mauvais</option>
-  </select>
+<input id="ratingPhone" placeholder="Votre numéro">
 
-  <textarea id="ratingDetails" placeholder="Expliquez votre expérience avec ce prestataire"></textarea>
+<select id="serviceRated">
 
-  <button onclick="sendRating()">Envoyer l'avis via WhatsApp</button>
+<option value="">Type de service</option>
+<option>Plombier</option>
+<option>Électricien</option>
+<option>Mécanicien</option>
+<option>Réparation téléphone</option>
+<option>Réparation ordinateur</option>
+<option>Climatisation</option>
+<option>Menuiserie</option>
+
+</select>
+
+<select id="ratingScore">
+
+<option value="">Note</option>
+<option>⭐⭐⭐⭐⭐ Excellent</option>
+<option>⭐⭐⭐⭐ Bon</option>
+<option>⭐⭐⭐ Moyen</option>
+<option>⭐⭐ Mauvais</option>
+<option>⭐ Très mauvais</option>
+
+</select>
+
+<textarea id="ratingDetails" placeholder="Expliquez votre expérience avec ce prestataire"></textarea>
+
+<button onclick="sendRating()">Envoyer l'avis via WhatsApp</button>
+
 </section>
 
 <footer>
-
 © 2026 ServiceGO+  
 Plateforme gratuite de mise en relation
-
 </footer>
 
 <script>
@@ -345,29 +319,31 @@ const providerNumber="22954454665"
 let gpsLink=""
 
 function openForm(){
-  document.getElementById("orderForm").style.display="block"
-  window.scrollTo(0,document.body.scrollHeight)
-}
-
-function openRating(){
-  document.getElementById("ratingSection").style.display="block"
-  window.scrollTo(0,document.body.scrollHeight)
+document.getElementById("orderForm").style.display="block"
+document.getElementById("orderForm").scrollIntoView({behavior:"smooth"})
 }
 
 function getLocation(){
-  if(navigator.geolocation){
-    navigator.geolocation.getCurrentPosition(position=>{
-      const lat=position.coords.latitude
-      const lon=position.coords.longitude
-      gpsLink="https://www.google.com/maps?q="+lat+","+lon
-      document.getElementById("location").value="Position GPS enregistrée ✔"
-    })
-  }
+if(navigator.geolocation){
+navigator.geolocation.getCurrentPosition(position=>{
+const lat=position.coords.latitude
+const lon=position.coords.longitude
+gpsLink="https://www.google.com/maps?q="+lat+","+lon
+document.getElementById("location").value="Position GPS enregistrée ✔"
+})
+}
 }
 
 function sendWhatsApp(){
-  const message=
-`Nouvelle demande GoService+
+
+const phone=document.getElementById("clientPhone").value
+
+if(!/^[0-9]{8,15}$/.test(phone)){
+alert("Veuillez entrer un numéro valide")
+return
+}
+
+const message= `Nouvelle demande ServiceGO+
 
 Client : ${clientName.value}
 Téléphone : ${clientPhone.value}
@@ -378,34 +354,40 @@ Quartier : ${clientArea.value}
 
 Problème : ${problem.value}
 
-Localisation :
-${gpsLink}
+Localisation : ${gpsLink}`
 
-Après l'envoi de ce message, merci d'envoyer un message vocal décrivant votre quartier exact et votre problème afin d'aider ServiceGO+ à trouver le prestataire le plus fiable.`
-  const url=`https://wa.me/${providerNumber}?text=${encodeURIComponent(message)}`
-  window.open(url,"_blank")
+const url=`https://wa.me/${providerNumber}?text=${encodeURIComponent(message)}`
+
+window.open(url,"_blank")
+
 }
 
+function openRating(){
+document.getElementById("ratingSection").style.display="block"
+document.getElementById("ratingSection").scrollIntoView({behavior:"smooth"})
+}
+
+
 function sendRating(){
-  const message=
-`Avis client ServiceGO+
+
+const message= `Avis client ServiceGO+
 
 Nom : ${ratingName.value}
 Téléphone : ${ratingPhone.value}
 
 Service : ${serviceRated.value}
+
 Note : ${ratingScore.value}
 
-Détails :
-${ratingDetails.value}`
-  const url=`https://wa.me/${providerNumber}?text=${encodeURIComponent(message)}`
-  window.open(url,"_blank")
+Détails : ${ratingDetails.value}`
+
+const url=`https://wa.me/${providerNumber}?text=${encodeURIComponent(message)}`
+
+window.open(url,"_blank")
+
 }
 
 </script>
 
 </body>
 </html>
-
-
-
