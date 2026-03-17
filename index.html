@@ -217,7 +217,7 @@ Pour votre sécurité et la qualité du service :
 <i class="fas fa-headset"></i> Assistance disponible en cas de problème.
 </div>
 
-<button onclick="sendWhatsApp()">Envoyer la demande sur WhatsApp</button>
+<button onclick="sendWhatsApp(event)">Envoyer la demande sur WhatsApp</button>
 
 </section>
 
@@ -260,17 +260,20 @@ Pour votre sécurité et la qualité du service :
 
 <textarea id="ratingDetails" placeholder="Expliquez votre expérience avec ce prestataire"></textarea>
 
-<button onclick="sendRating()">Envoyer l'avis via WhatsApp</button>
+<button onclick="sendRating(event)">Envoyer l'avis via WhatsApp</button>
 
 </section>
 
 <footer>© 2026 ServiceGO+</footer>
 
-
 <script>
 
 const providerNumber="22954454665"
 let gpsLink=""
+
+// ✅ Initialisation compteur au chargement
+document.getElementById("demandCount").innerText =
+localStorage.getItem("demandCount") || 327
 
 function openForm(){
 document.getElementById("orderForm").style.display="block"
@@ -291,53 +294,84 @@ document.getElementById("location").value="Position GPS enregistrée ✔"
 }
 }
 
-function sendWhatsApp(){
+function sendWhatsApp(event){
+
+event.target.disabled = true
 
 let phone = clientPhone.value.trim()
-
-// 🔥 Nettoyage du numéro (enlève espaces, +, etc.)
 phone = phone.replace(/[^0-9]/g,'')
 
-// Validation plus souple
 if(phone.length < 8){
 alert("Numéro invalide")
+event.target.disabled = false
 return
 }
 
-const message=`Bonjour ServiceGO+ 👋
+const name = clientName.value || "Client"
+const service = serviceType.value || "Non précisé"
+const area = clientArea.value || "Non précisé"
+const prob = problem.value || "Non précisé"
+const loc = gpsLink ? gpsLink : "Non activée"
 
-Je suis ${clientName.value}.
-J'ai besoin d'un prestataire en ${serviceType.value} à ${clientArea.value}.
+const message =
+"Bonjour ServiceGO+ 👋%0A%0A" +
+"Je suis " + name + ".%0A" +
+"J'ai besoin d'un prestataire.%0A%0A" +
+"🔧 Service : " + service + "%0A" +
+"📍 Zone : " + area + "%0A%0A" +
+"📌 Problème : " + prob + "%0A%0A" +
+"📍 Localisation : " + loc + "%0A%0A" +
+"Merci de m'envoyer rapidement un prestataire fiable."
 
-📌 Problème :
-${problem.value}
+window.open("https://wa.me/22954454665?text=" + message, "_blank")
 
-📍 Localisation :
-${gpsLink}
+alert("Demande envoyée avec succès ✅")
 
-Merci de m'envoyer rapidement un prestataire fiable.`
+let count = localStorage.getItem("demandCount") || 327
+count++
+localStorage.setItem("demandCount", count)
+document.getElementById("demandCount").innerText = count
 
-window.open(`https://wa.me/${providerNumber}?text=${encodeURIComponent(message)}`)
+// ✅ reset formulaire
+clientName.value=""
+clientPhone.value=""
+problem.value=""
+gpsLink=""
+document.getElementById("location").value=""
+
+event.target.disabled = false
 }
 
-function sendRating(){
+function sendRating(event){
 
-const message=`Bonjour ServiceGO+ ⭐
+event.target.disabled = true
 
-Je souhaite laisser un avis :
+const name = ratingName.value || "Non précisé"
+const phone = ratingPhone.value || "Non précisé"
+const service = serviceRated.value || "Non précisé"
+const score = ratingScore.value || "Non précisé"
+const details = ratingDetails.value || "Non précisé"
 
-Nom : ${ratingName.value}
-Téléphone : ${ratingPhone.value}
+const message =
+"Bonjour ServiceGO+ ⭐%0A%0A" +
+"Je souhaite laisser un avis :%0A%0A" +
+"👤 Nom : " + name + "%0A" +
+"📞 Téléphone : " + phone + "%0A%0A" +
+"🔧 Service : " + service + "%0A" +
+"⭐ Note : " + score + "%0A%0A" +
+"📝 Commentaire : " + details + "%0A%0A" +
+"Merci pour votre retour."
 
-Service : ${serviceRated.value}
-Note : ${ratingScore.value}
+window.open("https://wa.me/22954454665?text=" + message, "_blank")
 
-📝 Commentaire :
-${ratingDetails.value}
+alert("Avis envoyé avec succès ✅")
 
-Merci.`
+// reset formulaire avis
+ratingName.value=""
+ratingPhone.value=""
+ratingDetails.value=""
 
-window.open(`https://wa.me/${providerNumber}?text=${encodeURIComponent(message)}`)
+event.target.disabled = false
 }
 
 </script>
