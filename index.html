@@ -301,8 +301,8 @@ event.target.disabled = true
 let phone = clientPhone.value.trim()
 phone = phone.replace(/[^0-9]/g,'')
 
-if(phone.length < 8){
-alert("Numéro invalide")
+if(!/^229\d{8}$/.test(phone)){
+alert("Veuillez entrer un numéro valide au format 229XXXXXXXX")
 event.target.disabled = false
 return
 }
