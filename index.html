@@ -8,7 +8,6 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
 <style>
-
 *{box-sizing:border-box;margin:0;padding:0}
 
 body{
@@ -25,15 +24,8 @@ padding:70px 20px;
 text-align:center
 }
 
-header h1{
-font-size:2.6rem;
-margin-bottom:10px
-}
-
-header p{
-opacity:.95;
-margin-bottom:30px
-}
+header h1{font-size:2.6rem;margin-bottom:10px}
+header p{opacity:.95;margin-bottom:30px}
 
 .btn{
 background:#25d366;
@@ -80,11 +72,7 @@ border-radius:16px;
 box-shadow:0 10px 30px rgba(0,0,0,.06)
 }
 
-h2{
-color:#0a5cff;
-text-align:center;
-margin-bottom:20px
-}
+h2{color:#0a5cff;text-align:center;margin-bottom:20px}
 
 .features{
 display:grid;
@@ -119,11 +107,7 @@ font-size:16px;
 cursor:pointer
 }
 
-footer{
-text-align:center;
-padding:30px;
-color:#777
-}
+footer{text-align:center;padding:30px;color:#777}
 
 .warning{
 background:#fff4e5;
@@ -131,7 +115,6 @@ border-left:5px solid orange;
 padding:15px;
 margin-top:20px
 }
-
 </style>
 </head>
 
@@ -141,12 +124,11 @@ margin-top:20px
 
 <h1>ServiceGO+</h1>
 
-<img src="logo.png" alt="logo ServiceGO+" style="width:300px; display:block; margin:15px auto;">
+<img src="logo.png" style="width:300px; display:block; margin:15px auto;">
 
 <p>
-Plateforme gratuite qui vous met en relation avec des prestataires fiables partout à Cotonou.
-<br>
-Trouvez rapidement un prestataire de confiance à Cotonou, sans frais, sans stress et sans anarque.
+Plateforme gratuite qui vous met en relation avec des prestataires fiables partout à Cotonou.<br>
+Trouvez rapidement un prestataire de confiance, sans frais, sans stress et sans anarque.
 </p>
 
 <a class="btn" onclick="openForm()">
@@ -155,7 +137,7 @@ Trouvez rapidement un prestataire de confiance à Cotonou, sans frais, sans stre
 
 <br>
 
-<a class="callbtn" href="tel:0154454665">
+<a class="callbtn" href="tel:+22954454665">
 <i class="fas fa-phone"></i> Appeler directement
 </a>
 
@@ -171,19 +153,17 @@ Service gratuit • Aucun engagement
 
 <section>
 
-<h2>Services disponibles</h2>
+<h2>Services de prestataires disponibles</h2>
 
 <div class="features">
-
-<div class="feature"> <i class="fas fa-wrench"></i> <h3>Plombier</h3> </div>
-<div class="feature"> <i class="fas fa-bolt"></i> <h3>Électricien</h3> </div>
-<div class="feature"> <i class="fas fa-car"></i> <h3>Mécanicien</h3> </div>
-<div class="feature"> <i class="fas fa-mobile-screen"></i> <h3>Réparateur téléphone</h3> </div>
-<div class="feature"> <i class="fas fa-laptop"></i> <h3>Réparateur ordinateur</h3> </div>
-<div class="feature"> <i class="fas fa-fan"></i> <h3>Climatisation</h3> </div>
-<div class="feature"> <i class="fas fa-hammer"></i> <h3>Menuisier</h3> </div>
-<div class="feature"> <i class="fas fa-sim-card"></i> <h3>Service Moov Africa</h3> </div>
-
+<div class="feature"><i class="fas fa-wrench"></i><h3>Plombier</h3></div>
+<div class="feature"><i class="fas fa-bolt"></i><h3>Électricien</h3></div>
+<div class="feature"><i class="fas fa-car"></i><h3>Mécanicien</h3></div>
+<div class="feature"><i class="fas fa-mobile-screen"></i><h3>Réparateur téléphone</h3></div>
+<div class="feature"><i class="fas fa-laptop"></i><h3>Réparateur ordinateur</h3></div>
+<div class="feature"><i class="fas fa-fan"></i><h3>Climatisation</h3></div>
+<div class="feature"><i class="fas fa-hammer"></i><h3>Menuisier</h3></div>
+<div class="feature"><i class="fas fa-sim-card"></i><h3>Service Moov Africa</h3></div>
 </div>
 
 </section>
@@ -193,8 +173,7 @@ Service gratuit • Aucun engagement
 <h2>Demande de prestataire</h2>
 
 <input id="clientName" placeholder="Votre nom">
-
-<input id="clientPhone" placeholder="Votre numéro" type="tel">
+<input id="clientPhone" placeholder="Votre numéro(Format: 229xxxxxxxx sans le +)" type="tel">
 
 <select id="serviceType">
 <option value="">Choisir le service</option>
@@ -244,42 +223,22 @@ Pour votre sécurité et la qualité du service :
 
 <section>
 
-<h2>Comment ça marche ?</h2>
-
-<p style="text-align:center">
-1️⃣ Vous envoyez votre demande  
-2️⃣ ServiceGO+ trouve un prestataire disponible  
-3️⃣ Le prestataire intervient chez vous  
-4️⃣ Vous pouvez ensuite laisser une note
-</p>
-
-</section>
-
-<section>
-
 <h2>Donner votre avis</h2>
 
 <div style="text-align:center">
-
-<button onclick="openRating()" style="max-width:300px;margin:auto">
-Noter un prestataire
-</button>
-
+<button onclick="openRating()">Noter un prestataire</button>
 </div>
 
 </section>
-
 
 <section id="ratingSection" style="display:none">
 
 <h2>Noter un prestataire</h2>
 
 <input id="ratingName" placeholder="Votre nom">
-
-<input id="ratingPhone" placeholder="Votre numéro">
+<input id="ratingPhone" placeholder="Votre numéro(Format: 229xxxxxxxx sans le +)">
 
 <select id="serviceRated">
-
 <option value="">Type de service</option>
 <option>Plombier</option>
 <option>Électricien</option>
@@ -288,18 +247,15 @@ Noter un prestataire
 <option>Réparation ordinateur</option>
 <option>Climatisation</option>
 <option>Menuiserie</option>
-
 </select>
 
 <select id="ratingScore">
-
 <option value="">Note</option>
 <option>⭐⭐⭐⭐⭐ Excellent</option>
 <option>⭐⭐⭐⭐ Bon</option>
 <option>⭐⭐⭐ Moyen</option>
 <option>⭐⭐ Mauvais</option>
 <option>⭐ Très mauvais</option>
-
 </select>
 
 <textarea id="ratingDetails" placeholder="Expliquez votre expérience avec ce prestataire"></textarea>
@@ -308,10 +264,8 @@ Noter un prestataire
 
 </section>
 
-<footer>
-© 2026 ServiceGO+  
-Plateforme gratuite de mise en relation
-</footer>
+<footer>© 2026 ServiceGO+</footer>
+
 
 <script>
 
@@ -323,12 +277,15 @@ document.getElementById("orderForm").style.display="block"
 document.getElementById("orderForm").scrollIntoView({behavior:"smooth"})
 }
 
+function openRating(){
+document.getElementById("ratingSection").style.display="block"
+document.getElementById("ratingSection").scrollIntoView({behavior:"smooth"})
+}
+
 function getLocation(){
 if(navigator.geolocation){
 navigator.geolocation.getCurrentPosition(position=>{
-const lat=position.coords.latitude
-const lon=position.coords.longitude
-gpsLink="https://www.google.com/maps?q="+lat+","+lon
+gpsLink="https://www.google.com/maps?q="+position.coords.latitude+","+position.coords.longitude
 document.getElementById("location").value="Position GPS enregistrée ✔"
 })
 }
@@ -336,55 +293,51 @@ document.getElementById("location").value="Position GPS enregistrée ✔"
 
 function sendWhatsApp(){
 
-const phone=document.getElementById("clientPhone").value
+let phone = clientPhone.value.trim()
 
-if(!/^[0-9]{8,15}$/.test(phone)){
-alert("Veuillez entrer un numéro valide")
+// 🔥 Nettoyage du numéro (enlève espaces, +, etc.)
+phone = phone.replace(/[^0-9]/g,'')
+
+// Validation plus souple
+if(phone.length < 8){
+alert("Numéro invalide")
 return
 }
 
-const message= `Nouvelle demande ServiceGO+
+const message=`Bonjour ServiceGO+ 👋
 
-Client : ${clientName.value}
-Téléphone : ${clientPhone.value}
+Je suis ${clientName.value}.
+J'ai besoin d'un prestataire en ${serviceType.value} à ${clientArea.value}.
 
-Service demandé : ${serviceType.value}
+📌 Problème :
+${problem.value}
 
-Quartier : ${clientArea.value}
+📍 Localisation :
+${gpsLink}
 
-Problème : ${problem.value}
+Merci de m'envoyer rapidement un prestataire fiable.`
 
-Localisation : ${gpsLink}`
-
-const url=`https://wa.me/${providerNumber}?text=${encodeURIComponent(message)}`
-
-window.open(url,"_blank")
-
+window.open(`https://wa.me/${providerNumber}?text=${encodeURIComponent(message)}`)
 }
-
-function openRating(){
-document.getElementById("ratingSection").style.display="block"
-document.getElementById("ratingSection").scrollIntoView({behavior:"smooth"})
-}
-
 
 function sendRating(){
 
-const message= `Avis client ServiceGO+
+const message=`Bonjour ServiceGO+ ⭐
+
+Je souhaite laisser un avis :
 
 Nom : ${ratingName.value}
 Téléphone : ${ratingPhone.value}
 
 Service : ${serviceRated.value}
-
 Note : ${ratingScore.value}
 
-Détails : ${ratingDetails.value}`
+📝 Commentaire :
+${ratingDetails.value}
 
-const url=`https://wa.me/${providerNumber}?text=${encodeURIComponent(message)}`
+Merci.`
 
-window.open(url,"_blank")
-
+window.open(`https://wa.me/${providerNumber}?text=${encodeURIComponent(message)}`)
 }
 
 </script>
