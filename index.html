@@ -173,7 +173,7 @@ Service gratuit • Aucun engagement
 <h2>Demande de prestataire</h2>
 
 <input id="clientName" placeholder="Votre nom">
-<input id="clientPhone" placeholder="Votre numéro(Format: 229xxxxxxxx sans le +)" type="tel">
+<input id="clientPhone" placeholder="Ex: 22954454665" type="tel">
 
 <select id="serviceType">
 <option value="">Choisir le service</option>
@@ -236,7 +236,7 @@ Pour votre sécurité et la qualité du service :
 <h2>Noter un prestataire</h2>
 
 <input id="ratingName" placeholder="Votre nom">
-<input id="ratingPhone" placeholder="Votre numéro(Format: 229xxxxxxxx sans le +)">
+<input id="ratingPhone" placeholder="Ex: 22954454665">
 
 <select id="serviceRated">
 <option value="">Type de service</option>
@@ -258,7 +258,7 @@ Pour votre sécurité et la qualité du service :
 <option>⭐ Très mauvais</option>
 </select>
 
-<textarea id="ratingDetails" placeholder="Expliquez votre expérience avec ce prestataire"></textarea>
+<textarea id="ratingDetails"></textarea>
 
 <button onclick="sendRating(event)">Envoyer l'avis via WhatsApp</button>
 
@@ -271,9 +271,11 @@ Pour votre sécurité et la qualité du service :
 const providerNumber="22954454665"
 let gpsLink=""
 
-// ✅ Initialisation compteur au chargement
+// ✅ FIX chargement JS
+window.onload = function(){
 document.getElementById("demandCount").innerText =
 localStorage.getItem("demandCount") || 327
+}
 
 function openForm(){
 document.getElementById("orderForm").style.display="block"
@@ -294,15 +296,22 @@ document.getElementById("location").value="Position GPS enregistrée ✔"
 }
 }
 
-function sendWhatsApp(event){
+function sendWhatsApp(e){
 
+const event = e || window.event
 event.target.disabled = true
 
-let phone = clientPhone.value.trim()
-phone = phone.replace(/[^0-9]/g,'')
+let phone = clientPhone.value
+phone = phone.replace(/\D/g,'')
 
 if(!/^229\d{8}$/.test(phone)){
 alert("Veuillez entrer un numéro valide au format 229XXXXXXXX")
+event.target.disabled = false
+return
+}
+
+if(phone === providerNumber){
+alert("Veuillez entrer votre propre numéro, pas celui du service.")
 event.target.disabled = false
 return
 }
@@ -323,7 +332,7 @@ const message =
 "📍 Localisation : " + loc + "%0A%0A" +
 "Merci de m'envoyer rapidement un prestataire fiable."
 
-window.open("https://wa.me/22954454665?text=" + message, "_blank")
+window.location.href = "https://wa.me/" + providerNumber + "?text=" + message
 
 alert("Demande envoyée avec succès ✅")
 
@@ -332,7 +341,6 @@ count++
 localStorage.setItem("demandCount", count)
 document.getElementById("demandCount").innerText = count
 
-// ✅ reset formulaire
 clientName.value=""
 clientPhone.value=""
 problem.value=""
@@ -342,8 +350,9 @@ document.getElementById("location").value=""
 event.target.disabled = false
 }
 
-function sendRating(event){
+function sendRating(e){
 
+const event = e || window.event
 event.target.disabled = true
 
 const name = ratingName.value || "Non précisé"
@@ -362,11 +371,10 @@ const message =
 "📝 Commentaire : " + details + "%0A%0A" +
 "Merci pour votre retour."
 
-window.open("https://wa.me/22954454665?text=" + message, "_blank")
+window.location.href = "https://wa.me/" + providerNumber + "?text=" + message
 
 alert("Avis envoyé avec succès ✅")
 
-// reset formulaire avis
 ratingName.value=""
 ratingPhone.value=""
 ratingDetails.value=""
