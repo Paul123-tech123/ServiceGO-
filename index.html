@@ -115,6 +115,17 @@ border-left:5px solid orange;
 padding:15px;
 margin-top:20px
 }
+.feature{
+text-align:center;
+padding:15px;
+border-radius:10px;
+transition:0.3s;
+}
+
+.feature:hover{
+background:#f1f5ff;
+transform:translateY(-5px);
+}
 </style>
 </head>
 
@@ -156,16 +167,53 @@ Service gratuit • Aucun engagement
 <h2>Services de prestataires disponibles</h2>
 
 <div class="features">
-<div class="feature"><i class="fas fa-wrench"></i><h3>Plombier</h3></div>
-<div class="feature"><i class="fas fa-bolt"></i><h3>Électricien</h3></div>
-<div class="feature"><i class="fas fa-car"></i><h3>Mécanicien</h3></div>
-<div class="feature"><i class="fas fa-mobile-screen"></i><h3>Réparateur téléphone</h3></div>
-<div class="feature"><i class="fas fa-laptop"></i><h3>Réparateur ordinateur</h3></div>
-<div class="feature"><i class="fas fa-fan"></i><h3>Climatisation</h3></div>
-<div class="feature"><i class="fas fa-hammer"></i><h3>Menuisier</h3></div>
-<div class="feature"><i class="fas fa-sim-card"></i><h3>Service Moov Africa</h3></div>
+
+<div class="feature" onclick="selectService('Plomberie')">
+<i class="fas fa-wrench"></i>
+<h3>Plombier</h3>
 </div>
 
+<div class="feature" onclick="selectService('Électricité')">
+<i class="fas fa-bolt"></i>
+<h3>Électricien</h3>
+</div>
+
+<div class="feature" onclick="selectService('Mécanique')">
+<i class="fas fa-car"></i>
+<h3>Mécanicien</h3>
+</div>
+
+<div class="feature" onclick="selectService('Vidange de fosse')">
+<i class="fas fa-truck"></i>
+<h3>Vidange de fosse</h3>
+</div>
+
+<div class="feature" onclick="selectService('Réparation ordinateur')">
+<i class="fas fa-laptop"></i>
+<h3>Réparateur ordinateur</h3>
+</div>
+
+<div class="feature" onclick="selectService('Climatisation')">
+<i class="fas fa-fan"></i>
+<h3>Climatisation</h3>
+</div>
+
+<div class="feature" onclick="selectService('Menuiserie')">
+<i class="fas fa-hammer"></i>
+<h3>Menuisier</h3>
+</div>
+
+<div class="feature" onclick="selectService('Déménagement')">
+<i class="fas fa-truck-moving"></i>
+<h3>Déménagement</h3>
+</div>
+
+<div class="feature" onclick="selectService('Service MOOV AFRICA')">
+<i class="fas fa-sim-card"></i>
+<h3>Services Moov Africa</h3>
+</div>
+
+</div>
 </section>
 
 <section id="orderForm" style="display:none">
@@ -180,11 +228,12 @@ Service gratuit • Aucun engagement
 <option>Plomberie</option>
 <option>Électricité</option>
 <option>Mécanique</option>
-<option>Réparation téléphone</option>
+<option>Vidange de fosse</option>
 <option>Réparation ordinateur</option>
 <option>Climatisation</option>
 <option>Menuiserie</option>
-<option>Service MOOV AFRICA</option>
+<option>Déménagement</option>
+<option>Services MOOV AFRICA</option>
 </select>
 
 <select id="clientArea">
@@ -196,13 +245,14 @@ Service gratuit • Aucun engagement
 <option>Haie Vive</option>
 <option>Gbégamey</option>
 <option>Vèdoko</option>
+<option>autres (A insérer dans le description du problème)</option>
 </select>
 
 <textarea id="problem" placeholder="Décrivez le problème ou service demandé"></textarea>
 
 <input id="location" placeholder="Localisation GPS">
 
-<button onclick="getLocation()">Utiliser ma position GPS</button>
+<button onclick="getLocation(); return false;">Utiliser ma position GPS</button>
 
 <div class="warning">
 Pour votre sécurité et la qualité du service :
@@ -243,11 +293,12 @@ Pour votre sécurité et la qualité du service :
 <option>Plombier</option>
 <option>Électricien</option>
 <option>Mécanicien</option>
-<option>Réparation téléphone</option>
-<option>Réparation ordinateur</option>
+<option>Vidange de fosse</option>
+<option>Réparateur ordinateur</option>
 <option>Climatisation</option>
-<option>Menuiserie</option>
-<option>Service Moov Africa</option>
+<option>Menuiser</option>
+<option>Services Moov Africa</option>
+<option>Déménagement</option>
 </select>
 
 <select id="ratingScore">
@@ -259,7 +310,7 @@ Pour votre sécurité et la qualité du service :
 <option>⭐ Très mauvais</option>
 </select>
 
-<textarea id="ratingDetails"></textarea>
+<textarea id="ratingDetails" placeholder="Décrivez votre expérience"></textarea>
 
 <button onclick="sendRating(event)">Envoyer l'avis via WhatsApp</button>
 
@@ -333,7 +384,7 @@ const message =
 "📍 Localisation : " + loc + "%0A%0A" +
 "Merci de m'envoyer rapidement un prestataire fiable."
 
-window.location.href = "https://wa.me/" + providerNumber + "?text=" + message
+window.location.href = "https://wa.me/" + providerNumber + "?text=" + encodeURIComponent(message)
 
 alert("Demande envoyée avec succès ✅")
 
@@ -372,7 +423,7 @@ const message =
 "📝 Commentaire : " + details + "%0A%0A" +
 "Merci pour votre retour."
 
-window.location.href = "https://wa.me/" + providerNumber + "?text=" + message
+window.location.href = "https://wa.me/" + providerNumber + "?text=" + encodeURIComponent(message)
 
 alert("Avis envoyé avec succès ✅")
 
@@ -381,6 +432,14 @@ ratingPhone.value=""
 ratingDetails.value=""
 
 event.target.disabled = false
+}
+
+function selectService(service){
+
+openForm()
+
+document.getElementById("serviceType").value = service
+
 }
 
 </script>
