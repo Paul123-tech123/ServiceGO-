@@ -375,15 +375,21 @@ const prob = problem.value || "Non précisé"
 const loc = gpsLink ? gpsLink : "Non activée"
 
 const message =
-"Bonjour ServiceGO+ 👋%0A%0A" +
-"Je suis " + name + ".%0A" +
-"J'ai besoin d'un prestataire.%0A%0A" +
-"🔧 Service : " + service + "%0A" +
-"📍 Zone : " + area + "%0A%0A" +
-"📌 Problème : " + prob + "%0A%0A" +
-"📍 Localisation : " + loc + "%0A%0A" +
-"Merci de m'envoyer rapidement un prestataire fiable."
+`Bonjour ServiceGO+ 👋
 
+Je suis ${name}.
+J'ai besoin d'un prestataire.
+
+🔧 Service : ${service}
+📍 Zone : ${area}
+
+📌 Problème :
+${prob}
+
+📍 Localisation :
+${loc}
+
+Merci de m'envoyer rapidement un prestataire fiable.`
 window.location.href = "https://wa.me/" + providerNumber + "?text=" + encodeURIComponent(message)
 
 alert("Demande envoyée avec succès ✅")
@@ -414,15 +420,20 @@ const score = ratingScore.value || "Non précisé"
 const details = ratingDetails.value || "Non précisé"
 
 const message =
-"Bonjour ServiceGO+ ⭐%0A%0A" +
-"Je souhaite laisser un avis :%0A%0A" +
-"👤 Nom : " + name + "%0A" +
-"📞 Téléphone : " + phone + "%0A%0A" +
-"🔧 Service : " + service + "%0A" +
-"⭐ Note : " + score + "%0A%0A" +
-"📝 Commentaire : " + details + "%0A%0A" +
-"Merci pour votre retour."
+`Bonjour ServiceGO+ ⭐
 
+Je souhaite laisser un avis :
+
+👤 Nom : ${name}
+📞 Téléphone : ${phone}
+
+🔧 Service : ${service}
+⭐ Note : ${score}
+
+📝 Commentaire :
+${details}
+
+Merci pour votre retour.`
 window.location.href = "https://wa.me/" + providerNumber + "?text=" + encodeURIComponent(message)
 
 alert("Avis envoyé avec succès ✅")
