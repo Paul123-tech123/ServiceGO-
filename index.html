@@ -139,7 +139,7 @@ transform:translateY(-5px);
 
 <p>
 Plateforme gratuite qui vous met en relation avec des prestataires fiables partout à Cotonou.<br>
-Trouvez rapidement un prestataire de confiance, sans frais, sans stress et sans anarque.
+Trouvez rapidement un prestataire de confiance, sans frais, sans stress et sans arnaque.
 </p>
 
 <a class="btn" onclick="openForm()">
@@ -252,7 +252,7 @@ Service gratuit • Aucun engagement
 
 <input id="location" placeholder="Localisation GPS">
 
-<button onclick="getLocation(); return false;">Utiliser ma position GPS</button>
+<button  type="button" onclick="getLocation(); return false;">Utiliser ma position GPS</button>
 
 <div class="warning">
 Pour votre sécurité et la qualité du service :
@@ -296,7 +296,7 @@ Pour votre sécurité et la qualité du service :
 <option>Vidange de fosse</option>
 <option>Réparateur ordinateur</option>
 <option>Climatisation</option>
-<option>Menuiser</option>
+<option>Menuisier</option>
 <option>Services Moov Africa</option>
 <option>Déménagement</option>
 </select>
@@ -389,9 +389,12 @@ ${prob}
 📍 Localisation :
 ${loc}
 
-Merci de m'envoyer rapidement un prestataire fiable.`
-window.location.href = "https://wa.me/" + providerNumber + "?text=" + encodeURIComponent(message)
+🎤 Dernière chose :
+Pouvez-vous envoyer un message audio pour décrire précisément l'endroit où le prestataire doit intervenir ? 
+(maison, rue, point de repère, couleur du portail, emplacement où vous l'attendrez, etc.)
+`;
 
+window.location.href = "https://wa.me/" + providerNumber + "?text=" + encodeURIComponent(message)
 alert("Demande envoyée avec succès ✅")
 
 let count = localStorage.getItem("demandCount") || 327
