@@ -139,7 +139,7 @@ transform:translateY(-5px);
 
 <p>
 Plateforme gratuite qui vous met en relation avec des prestataires fiables partout à Cotonou.<br>
-Trouvez rapidement un prestataire de confiance, sans frais, sans stress et sans arnaque.
+Trouvez rapidement un prestataire de confiance, sans frais, sans stress et sans anarque.
 </p>
 
 <a class="btn" onclick="openForm()">
@@ -161,6 +161,74 @@ Service gratuit • Aucun engagement
 </p>
 
 </header>
+
+<section>
+
+<h2>Pourquoi passer par ServiceGO+ ?</h2>
+
+<div class="features">
+
+<div class="feature">
+<i class="fas fa-star"></i>
+<h3>Système d'avis et de notation</h3>
+<p>
+Après chaque intervention, vous pouvez noter le prestataire.
+Cela permet d’identifier les meilleurs professionnels et d’améliorer la qualité des services.
+</p>
+</div>
+
+<div class="feature">
+<i class="fas fa-route"></i>
+<h3>Suivi complet de votre demande</h3>
+<p>
+ServiceGO+ suit votre demande du début jusqu'à la fin de l’intervention
+afin de garantir que le travail soit correctement réalisé.
+</p>
+</div>
+
+<div class="feature">
+<i class="fas fa-shield-alt"></i>
+<h3>Garantie ServiceGO+</h3>
+<p>
+Si un prestataire ne réalise pas correctement le travail,
+améliorer le service ou remplacer le prestataire.
+Un remboursement peut être envisagé selon la situation.
+</p>
+</div>
+
+<div class="feature">
+<i class="fas fa-headset"></i>
+<h3>Assistance humaine réelle</h3>
+<p>
+Vous discutez directement avec une vraie personne de l’équipe ServiceGO+.
+Pas de robot, pas de messages ignorés.
+Nous restons disponibles pour vous accompagner.
+</p>
+</div>
+
+<div class="feature">
+<i class="fas fa-phone"></i>
+<h3>Rappel possible par ServiceGO+</h3>
+<p>
+Vous pouvez nous biper et nous vous rappelons rapidement.
+Si vous n’avez pas d’unité, ServiceGO+ peut vous recharger jusqu’à 250F
+afin que vous puissiez effectuer votre demande de prestataire.
+</p>
+</div>
+
+<div class="feature">
+<i class="fas fa-lock"></i>
+<h3>Protection des clients</h3>
+<p>
+Pour votre sécurité, toute demande effectuée en dehors de ServiceGO+
+ne pourra pas être suivie ni couverte par la plateforme.
+Nous vous recommandons donc de toujours passer par ServiceGO+.
+</p>
+</div>
+
+</div>
+
+</section>
 
 <section>
 
@@ -252,7 +320,7 @@ Service gratuit • Aucun engagement
 
 <input id="location" placeholder="Localisation GPS">
 
-<button  type="button" onclick="getLocation(); return false;">Utiliser ma position GPS</button>
+<button onclick="getLocation(); return false;">Utiliser ma position GPS</button>
 
 <div class="warning">
 Pour votre sécurité et la qualité du service :
@@ -296,7 +364,7 @@ Pour votre sécurité et la qualité du service :
 <option>Vidange de fosse</option>
 <option>Réparateur ordinateur</option>
 <option>Climatisation</option>
-<option>Menuisier</option>
+<option>Menuiser</option>
 <option>Services Moov Africa</option>
 <option>Déménagement</option>
 </select>
@@ -389,12 +457,9 @@ ${prob}
 📍 Localisation :
 ${loc}
 
-🎤 Dernière chose :
-Pouvez-vous envoyer un message audio pour décrire précisément l'endroit où le prestataire doit intervenir ? 
-(maison, rue, point de repère, couleur du portail, emplacement où vous l'attendrez, etc.)
-`;
-
+Merci de m'envoyer rapidement un prestataire fiable.`
 window.location.href = "https://wa.me/" + providerNumber + "?text=" + encodeURIComponent(message)
+
 alert("Demande envoyée avec succès ✅")
 
 let count = localStorage.getItem("demandCount") || 327
